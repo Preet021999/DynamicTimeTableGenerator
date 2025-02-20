@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ModelTimeTable;
+@{
+    ViewBag.Title = "Generate TimeTable";
+}
+<div>
+    <div class="row mb-3">
+        <h2>Time Table Entry</h2>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm("SubjectHoursForm", "TimeTable", FormMethod.Post))
+        {
+            <label>No. of Working Days:</label>
+            @Html.TextBoxFor(m => m.WorkingDays, new { @class = "form-control", type = "number", min = "1", max = "7", required = "required" })
+            <br />
+
+            <label>No. of Subjects per Day:</label>
+            @Html.TextBoxFor(m => m.SubjectsPerDay, new { @class = "form-control", type = "number", min = "1", max = "8", required = "required" })
+            <br />
+
+            <label>Total Subjects:</label>
+            @Html.TextBoxFor(m => m.TotalSubjects, new { @class = "form-control", type = "number", min = "1", required = "required" })
+            <br />
+
+            <label>Total Weekly Hours:</label>
+            <input type="text" id="totalHours" class="form-control" readonly />
+
+            <br />
+            <button type="submit" id="btnSaveTimeTableDetails" class="btn btn-primary" disabled>Submit</button>
+        }
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/TimeTableEntry.js"></script>
