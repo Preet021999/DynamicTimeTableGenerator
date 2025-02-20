@@ -3,12 +3,25 @@
     var enteredHours = 0;
     var allFilled = true;
 
-    $(".subject-hours").each(function () {
-        var value = parseInt($(this).val()) || 0;
-        if ($(this).val().trim() === "" || value <= 0) {
-            allFilled = false; // Check if any field is empty or zero
+    $(".error-message").remove(); // Remove previous error messages
+
+    $(".subject-row").each(function () {
+        var subjectName = $(this).find(".subject-name").val().trim();
+        var subjectHours = parseInt($(this).find(".subject-hours").val()) || 0;
+
+        // Check if subject name is empty
+        if (subjectName === "") {
+            $(this).find(".subject-name").after("<span class='error-message' style='color: red; font-size: 12px;'>Enter subject name</span>");
+            allFilled = false;
         }
-        enteredHours += value;
+
+        // Check if subject hours are empty or zero
+        if (subjectHours <= 0) {
+            $(this).find(".subject-hours").after("<span class='error-message' style='color: red; font-size: 12px;'>Enter valid hours</span>");
+            allFilled = false;
+        }
+
+        enteredHours += subjectHours;
     });
 
     $("#remainingHours").text(totalHours - enteredHours);
@@ -17,4 +30,4 @@
     $("#btnGenerate").prop("disabled", enteredHours !== totalHours || !allFilled);
 }
 
-$(".subject-hours").on("input", validateHours);
+$(".subject-name, .subject-hours").on("input", validateHours);

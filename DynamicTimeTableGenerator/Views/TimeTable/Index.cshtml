@@ -10,7 +10,7 @@
         <h2>Time Table Entry</h2>
     </div>
     <div class="row">
-        @using (Html.BeginForm("SubjectHoursForm", "TimeTable", FormMethod.Post))
+        @using (Html.BeginForm("SubjectHoursEntry", "TimeTable", FormMethod.Post))
         {
             <label>No. of Working Days:</label>
             @Html.TextBoxFor(m => m.WorkingDays, new { @class = "form-control", type = "number", min = "1", max = "7", required = "required" })

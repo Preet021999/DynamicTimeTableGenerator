@@ -15,7 +15,7 @@ namespace DynamicTimeTableGenerator.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult SubjectHoursForm()
+        public ActionResult SubjectHoursEntry()
         {
             return View("~/Views/TimeTable/Index.cshtml",new ModelTimeTable());
         }
@@ -29,7 +29,7 @@ namespace DynamicTimeTableGenerator.Controllers
             return View("~/Views/TimeTable/Index.cshtml", new ModelTimeTable());
         }
         [HttpPost]
-        public ActionResult SubjectHoursForm(ModelTimeTable model)
+        public ActionResult SubjectHoursEntry(ModelTimeTable model)
         {
             if (!ModelState.IsValid)
             {
@@ -42,7 +42,7 @@ namespace DynamicTimeTableGenerator.Controllers
                 return View("Index", model); // Return the same view with errors
             }
 
-            return View("SubjectHoursForm", model);
+            return View("SubjectHoursEntry", model);
         }
 
         [HttpPost]
