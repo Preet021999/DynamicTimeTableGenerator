@@ -70,7 +70,6 @@ The **Dynamic Time Table Generator** is a web application built using **ASP.NET 
 │   ├── js
 │
 │── 📄 README.md
-│── 📄 Startup.cs
 │── 📄 Program.cs
 ```
 
@@ -93,15 +92,6 @@ cd DynamicTimeTableGenerator
 - Press `F5` or `Ctrl + F5`
 - The app will launch in your browser
 
-## 📸 Screenshots
-
-📌 **Coming Soon!**
-
-## 📝 Future Enhancements
-
-🔹 User authentication (login/logout)\
-🔹 Export timetable to **PDF or Excel**\
-🔹 Drag-and-drop timetable customization
 
 ## 🤝 Contributing
 
