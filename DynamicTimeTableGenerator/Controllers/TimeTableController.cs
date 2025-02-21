@@ -1,6 +1,7 @@
 ﻿using DynamicTimeTableGenerator.BLL;
 using DynamicTimeTableGenerator.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace DynamicTimeTableGenerator.Controllers
 {
@@ -19,15 +20,6 @@ namespace DynamicTimeTableGenerator.Controllers
         {
             return View("~/Views/TimeTable/Index.cshtml",new ModelTimeTable());
         }
-        /// <summary>
-        /// If anybody direct refresh the page then redirect to entry page
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult GenerateTimeTable()
-        {
-            return View("~/Views/TimeTable/Index.cshtml", new ModelTimeTable());
-        }
         [HttpPost]
         public ActionResult SubjectHoursEntry(ModelTimeTable model)
         {
@@ -44,18 +36,16 @@ namespace DynamicTimeTableGenerator.Controllers
 
             return View("SubjectHoursEntry", model);
         }
-
-        [HttpPost]
-        public ActionResult GenerateTimeTable(ModelTimeTable model)
+        /// <summary>
+        /// This method is used to generate timetable
+        /// </summary>
+        /// <param name="timetable"></param>
+        /// <returns></returns>
+        public JsonResult GenerateTimeTables(ModelTimeTable timetable)
         {
-            if (model.SubjectHoursList.Sum(x => x.Hours) != model.TotalWeeklyHours)
-            {
-                ModelState.AddModelError("", "Total subject hours must match total weekly hours.");
-                return View("SubjectHoursForm", model);
-            }
             TimeTableBLL timeTableBll = new TimeTableBLL();
-            ModelTimeTableList timetable = timeTableBll.GenerateTimetable(model);
-            return View("TimeTableResult", timetable);
+            ModelTimeTableList timeTableData = timeTableBll.GenerateTimetable(timetable);
+            return Json(new { success = true, timeTableData });
         }
     }
 }

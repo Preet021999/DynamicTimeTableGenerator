@@ -1,10 +1,8 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model ModelTimeTable;
+﻿@model ModelTimeTable
 @{
     ViewBag.Title = "Generate TimeTable";
 }
+
 <div>
     <div class="row mb-3">
         <h2>Time Table Entry</h2>
@@ -26,11 +24,13 @@
 
             <label>Total Weekly Hours:</label>
             <input type="text" id="totalHours" class="form-control" readonly />
-
             <br />
+
             <button type="submit" id="btnSaveTimeTableDetails" class="btn btn-primary" disabled>Submit</button>
+            <button type="button" id="resetButton" class="btn btn-secondary">Reset</button>
         }
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/TimeTableEntry.js"></script>
