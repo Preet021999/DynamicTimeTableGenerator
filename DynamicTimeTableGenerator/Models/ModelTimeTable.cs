@@ -24,8 +24,8 @@ namespace DynamicTimeTableGenerator.Models
     }
     public class ModelTimeTableList
     {
-        public int WorkingDays { get; set; }       // Number of working days
-        public int SubjectsPerDay { get; set; }    // Subjects per day
+        public int WorkingDays { get; set; }   
+        public int SubjectsPerDay { get; set; }  
         public List<ModelSubjects> TimetableRows { get; set; } = new List<ModelSubjects>();
     }
     public class ModelSubjects

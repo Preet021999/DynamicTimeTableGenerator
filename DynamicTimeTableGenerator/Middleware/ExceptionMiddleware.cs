@@ -36,7 +36,7 @@ namespace DynamicTimeTableGenerator.Middleware
             {
                 StatusCode = context.Response.StatusCode,
                 Message = "An unexpected error occurred. Please try again later.",
-                Details = exception.Message // Remove in production for security
+                Details = exception.Message 
             };
 
             var jsonResponse = JsonSerializer.Serialize(errorResponse);

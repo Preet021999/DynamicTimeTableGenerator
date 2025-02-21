@@ -40,6 +40,7 @@ function resetForm() {
     $("#totalHours").val("");
     $(".error-message").remove();
     $("#btnSaveTimeTableDetails").prop("disabled", true);
+    $('#WorkingDays').focus();
 }
 
 $("#WorkingDays, #SubjectsPerDay, #TotalSubjects").on("input", validateForm);

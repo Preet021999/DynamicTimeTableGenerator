@@ -31,7 +31,7 @@ namespace DynamicTimeTableGenerator.Controllers
                     Console.WriteLine(error.ErrorMessage);
                 }
 
-                return View("Index", model); // Return the same view with errors
+                return View("Index", model); 
             }
 
             return View("SubjectHoursEntry", model);

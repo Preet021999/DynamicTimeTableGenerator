@@ -8,13 +8,11 @@ namespace DynamicTimeTableGenerator.BLL
         {
             var subjects = new List<string>();
 
-            // Populate the subjects list based on assigned hours
             foreach (var sub in model.SubjectHoursList)
             {
                 subjects.AddRange(Enumerable.Repeat(sub.SubjectName, sub.Hours));
             }
 
-            // Shuffle subjects randomly
             Random rand = new Random();
             subjects = subjects.OrderBy(x => rand.Next()).ToList();
 
